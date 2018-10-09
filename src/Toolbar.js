@@ -14,7 +14,10 @@ class Toolbar extends React.Component {
   }
 
   render() {
-    let { localizer: { messages }, label } = this.props
+    let {
+      localizer: { messages },
+      label,
+    } = this.props
 
     return (
       <div className="rbc-toolbar">
@@ -25,21 +28,25 @@ class Toolbar extends React.Component {
           >
             {messages.today}
           </button>
+        </span>
+        <div className="rbc-toolbar-label-group">
           <button
             type="button"
             onClick={this.navigate.bind(null, navigate.PREVIOUS)}
+            className="rbc-toolbar-label-button"
           >
-            {messages.previous}
+            <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQBAMAAADt3eJSAAAAMFBMVEUAAABVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV67uviAAAAD3RSTlMAAQIhJjY3OFBzd3h5lbXp2xrRAAAAP0lEQVQIW2NgAAFFBghgeisAYej9N4AIvP8OE0iACnyDCQSgqmCY/wvK4Py/ACb0Gy50ACb0By7kAGXNYEAAACjLFV0Yq7spAAAAAElFTkSuQmCC" />
           </button>
+          <span className="rbc-toolbar-label">{label}</span>
+
           <button
             type="button"
             onClick={this.navigate.bind(null, navigate.NEXT)}
+            className="rbc-toolbar-label-button"
           >
-            {messages.next}
+            <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAMAAAAoLQ9TAAAANlBMVEUAAABVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVU8VfA3AAAAEXRSTlMAAQIOEh5Me4KDhYyVotXo+eyqZjUAAAA5SURBVBhXrcg5FoAgAMTQoLixOve/LC2jnc90PwCEHSsUZT9Jz3O9zvnpVOmYvd3q649euhtic1sDjF4C1F0iZL0AAAAASUVORK5CYII=" />
           </button>
-        </span>
-
-        <span className="rbc-toolbar-label">{label}</span>
+        </div>
 
         <span className="rbc-btn-group">{this.viewNamesGroup(messages)}</span>
       </div>
