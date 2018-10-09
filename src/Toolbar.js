@@ -48,7 +48,7 @@ class Toolbar extends React.Component {
           </button>
         </div>
 
-        <span className="rbc-btn-group">{this.viewNamesGroup(messages)}</span>
+        <span className="rbc-btn-group">{this.viewNamesGroup()}</span>
       </div>
     )
   }
@@ -61,22 +61,37 @@ class Toolbar extends React.Component {
     this.props.onView(view)
   }
 
-  viewNamesGroup(messages) {
-    let viewNames = this.props.views
+  viewNamesGroup() {
+    // let viewNames = this.props.views
+    // let viewNames = ['month', 'agenda']
     const view = this.props.view
 
-    if (viewNames.length > 1) {
-      return viewNames.map(name => (
+    return (
+      <div>
         <button
           type="button"
-          key={name}
-          className={cn({ 'rbc-active': view === name })}
-          onClick={this.view.bind(null, name)}
+          onClick={this.view.bind(null, 'month')}
+          className="rbc-toolbar-label-button"
         >
-          {messages[name]}
+          <img
+            className={cn({
+              'rbc-active': view === 'month',
+            })}
+            src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABYAAAAWCAMAAADzapwJAAAAb1BMVEUAAABVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVT/dfLAAAAJHRSTlMAAQYREy8wOjtASVBRVltiaGlvcXuFnaq8wcPFx9PZ2u/x9/knlf4EAAAAkklEQVQYlb2QSQ7CQBADC8IW0sM+abKSgP//Rg4hEssNIepiqQ62ZICkUJEAcOz7AyNlHeoSYKHdXvNRKxAEkAmUATA7RQWCYoyxEqiKmwm0kgJBAyBJqyG2bF+0DaH+YXW9Pus3DBSAC4ADaQp8oVt3v7m7d+7eNO7+u+7/T/ZuZp2ZWWtmeW5mWsOy+zjwPOUOu10dBKkwp8sAAAAASUVORK5CYII="
+          />
         </button>
-      ))
-    }
+
+        <button
+          type="button"
+          onClick={this.view.bind(null, 'agenda')}
+          className={cn('rbc-toolbar-label-button', {
+            'rbc-active': view === 'agenda',
+          })}
+        >
+          <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUAgMAAADw5/WeAAAADFBMVEUAAABVVVVVVVVVVVWH3s5DAAAAA3RSTlMAEEDGaJcfAAAAKElEQVQIW2NkAAHGVf8TFzAw/v8v+AFBMjEgSJ4Fz8DiD6EkRBcFegEEuTAFdWxDPgAAAABJRU5ErkJggg==" />
+        </button>
+      </div>
+    )
   }
 }
 
